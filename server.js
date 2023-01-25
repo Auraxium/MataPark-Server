@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const fs = require("fs");
 const cors = require("cors");
+const puppeteer = require('puppeteer')
 
 const mongoose = require("mongoose");
 var permitModel = mongoose.model('Permit', new mongoose.Schema({license: mongoose.Mixed, expires: mongoose.Mixed}))
@@ -26,17 +27,29 @@ mongoose.connect(URI, {
 .catch((err) => console.log(err));
 
 app.get("/load", (req, res) => {
-	//res.sendFile(__dirname + "/permits.json")
 	permitModel.find().then(arr => res.json(arr))
 })
 
+app.get("/parking-availability", async (req, res) => {
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	await page.goto('https://m.csun.edu/alumni_community/find_parking/index')
+
+	const lots = await page.evaluate(() => 
+		Array.from(document.querySelectorAll('tr.kgoui_object.kgoui_table_table_row'), (e) => ({
+			lot: e.querySelector(':first-child div a div .kgo-title :first-child strong').innerText,
+			slots: e.querySelector(':nth-child(2) div a div .kgo-title :first-child span').innerText
+		}))
+	)
+
+	console.log(lots);
+
+	await browser.close();
+
+	res.json(lots);
+})
+
 app.post("/save", (req, res) => {
-  // fs.writeFile("permits.json", JSON.stringify(req.body), "utf8", (err) => {
-  //   if (err) {
-  //     console.log(err);
-  //     return console.log("ERROR: Failed to save");
-  //   }
-  // });
 
 	console.log(req.body)
 
@@ -47,7 +60,6 @@ app.post("/save", (req, res) => {
 	permit.save().then(() => res.json('Permit added'))
   .catch(err => res.status(400).json('Error: ' + err));
 
- // return res.end("File saved.");
 });
 
 app.delete("/delete/:id", (req, res) => {
