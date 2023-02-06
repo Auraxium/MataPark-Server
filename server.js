@@ -30,7 +30,8 @@ app.get("/load", (req, res) => {
 })
 
 app.get("/parking-availability", async (req, res) => {
-	console.log('--------------')
+	try {
+		console.log('--------------')
 	const browser = await puppeteer.launch();
 	console.log('launched')
 	const page = await browser.newPage();
@@ -54,6 +55,12 @@ const lots = await page.evaluate(() =>
 	await browser.close();
 
 	console.log('closed')
+	} catch(err) {
+		console.log(err);
+		res.send(err);
+		await browser.close();
+	}
+	
 })
 
 app.post("/save", (req, res) => {
