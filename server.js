@@ -57,7 +57,7 @@ const lots = await page.evaluate(() =>
 	console.log('closed')
 	} catch(err) {
 		console.log(err);
-		res.send(err);
+		res.status(500).send(err);
 		await browser.close();
 	}
 	
