@@ -31,9 +31,12 @@ app.get("/load", (req, res) => {
 })
 
 app.get("/parking-availability", async (req, res) => {
+	console.log('--------------')
 	const browser = await puppeteer.launch();
 	console.log('launched')
 	const page = await browser.newPage();
+	console.log('new page')
+
 	await page.goto('https://m.csun.edu/alumni_community/find_parking/index');
 
 	console.log('on page')
@@ -47,9 +50,11 @@ const lots = await page.evaluate(() =>
 
 	console.log('got lots');
 
+	res.json(lots);
+
 	await browser.close();
 
-	res.json(lots);
+	console.log('closed')
 })
 
 app.post("/save", (req, res) => {
