@@ -32,17 +32,20 @@ app.get("/load", (req, res) => {
 
 app.get("/parking-availability", async (req, res) => {
 	const browser = await puppeteer.launch();
+	console.log('launched')
 	const page = await browser.newPage();
-	await page.goto('https://m.csun.edu/alumni_community/find_parking/index')
+	await page.goto('https://m.csun.edu/alumni_community/find_parking/index');
 
-	const lots = await page.evaluate(() => 
+	console.log('on page')
+
+const lots = await page.evaluate(() => 
 		Array.from(document.querySelectorAll('tr.kgoui_object.kgoui_table_table_row'), (e) => ({
 			lot: e.querySelector(':first-child div a div .kgo-title :first-child strong').innerText,
 			slots: e.querySelector(':nth-child(2) div a div .kgo-title :first-child span').innerText
 		}))
 	)
 
-	console.log(lots);
+	console.log('got lots');
 
 	await browser.close();
 
