@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
+const Chromium = require("chromium")
 const path = require("path");
 const fs = require("fs");
 const cors = require("cors");
 const puppeteer = require('puppeteer')
-
 const mongoose = require("mongoose");
 var permitModel = mongoose.model('Permit', new mongoose.Schema({license: mongoose.Mixed, expires: mongoose.Mixed}))
 const URI = "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority"
@@ -38,7 +38,6 @@ app.get("/parking-availability", async (req, res) => {
 	console.log('new page')
 
 	await page.goto('https://m.csun.edu/alumni_community/find_parking/index');
-
 	console.log('on page')
 
 const lots = await page.evaluate(() => 
@@ -64,13 +63,9 @@ const lots = await page.evaluate(() =>
 })
 
 app.post("/save", (req, res) => {
-
 	console.log(req.body)
-
 	let permit = new permitModel(req.body);
-
 	console.log(permit) 
-
 	permit.save().then(() => res.json('Permit added'))
   .catch(err => res.status(400).json('Error: ' + err));
 
