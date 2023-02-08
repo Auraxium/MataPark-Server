@@ -14,8 +14,8 @@ const URI =
 //	Chromium.install().then(() => parkingUpdate())
 //	parkingUpdate();
 
+//attemps: 2
 	 
-
 app.use(
   cors({
     origin: "*",
