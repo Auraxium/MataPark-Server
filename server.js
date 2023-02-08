@@ -25,11 +25,9 @@ mongoose.connect(URI, {
 .then(() => console.log("connected to database"))
 .catch((err) => console.log(err));
 
-app.get("/load", (req, res) => {
-	permitModel.find().then(arr => res.json(arr))
-})
+let lot_global = {};
 
-app.get("/parking-availability", async (req, res) => {
+async function parkingUpdate() {
 	try {
 		console.log('--------------')
 	const browser = await puppeteer.launch();
@@ -48,18 +46,27 @@ const lots = await page.evaluate(() =>
 	)
 
 	console.log('got lots');
-
-	res.json(lots);
+	lot_global = lots;
 
 	await browser.close();
 
 	console.log('closed')
 	} catch(err) {
 		console.log(err);
-		res.status(500).send(err);
 		await browser.close();
 	}
 	
+}
+
+parkingUpdate();
+let interval = setInterval(parkingUpdate, 9*60*1000);
+
+app.get("/load", (req, res) => {
+	permitModel.find().then(arr => res.json(arr))
+})
+
+app.get("/parking-availability", async (req, res) => {
+	return res.json(lot_global);
 })
 
 app.post("/save", (req, res) => {
