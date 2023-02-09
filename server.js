@@ -4,7 +4,6 @@ const cors = require("cors");
 const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
 const Chromium = require("chromium");
-const { exec } = require('node:child_process')
 var permitModel = mongoose.model(
   "Permit",
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
