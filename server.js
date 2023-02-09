@@ -4,6 +4,7 @@ const cors = require("cors");
 const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
 const Chromium = require("chromium");
+const { exec } = require('node:child_process')
 var permitModel = mongoose.model(
   "Permit",
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
@@ -39,7 +40,10 @@ let lot_global = {};
 async function parkingUpdate() {
   try {
     console.log("--------------");
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      executablePath: '/opt/render/project/.chrome',
+      headless: false
+    });
     console.log("launched");
     const page = await browser.newPage();
     console.log("new page");
