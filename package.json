@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "chromedriver": "^110.0.0",
     "chromium": "^3.0.3",
     "cors": "^2.8.5",
     "env": "^0.0.2",
@@ -8,7 +7,6 @@
     "fs": "^0.0.1-security",
     "mongoose": "^6.8.0",
     "path": "^0.12.7",
-    "puppeteer": "^19.6.3",
-    "selenium-webdriver": "^4.8.0"
+    "puppeteer": "^19.6.3"
   }
 }

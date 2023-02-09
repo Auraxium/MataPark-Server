@@ -14,11 +14,13 @@ const URI =
 
   let lot_interval;
 
- parkingUpdate();
- let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
 
-//	Chromium.install().then(() => parkingUpdate())
+
+//	chromium.install().then(() => parkingUpdate())
 //	parkingUpdate();
+
+parkingUpdate();
+let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
 
 //attemps: 2
 	 
