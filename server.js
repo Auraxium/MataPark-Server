@@ -4,7 +4,6 @@ const cors = require("cors");
 const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
 const chromium = require('chromium');
-
 var permitModel = mongoose.model(
   "Permit",
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
@@ -12,7 +11,7 @@ var permitModel = mongoose.model(
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
-  let lot_interval;
+let lot_interval;
 
 
 
@@ -20,7 +19,7 @@ const URI =
 //	parkingUpdate();
 
 parkingUpdate();
-let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
+let interval = setInterval(parkingUpdate, 8 * 1000 * 60);
 
 //attemps: 3
 	 
