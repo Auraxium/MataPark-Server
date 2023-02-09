@@ -3,13 +3,19 @@ const app = express();
 const cors = require("cors");
 const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
-const Chromium = require("chromium");
+const chromium = require('chromium');
+
 var permitModel = mongoose.model(
   "Permit",
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
 );
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
+
+  let lot_interval;
+
+ parkingUpdate();
+ let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
 
 //	Chromium.install().then(() => parkingUpdate())
 //	parkingUpdate();
@@ -40,8 +46,8 @@ async function parkingUpdate() {
   try {
     console.log("--------------");
     const browser = await puppeteer.launch({
-      executablePath: '/opt/render/project/.chrome',
-      headless: false
+      executablePath: chromium.path,
+      headless: true
     });
     console.log("launched");
     const page = await browser.newPage();
@@ -75,9 +81,6 @@ async function parkingUpdate() {
     await browser.close();
   }
 }
-
-parkingUpdate();
-let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
 
 app.get("/load", (req, res) => {
   permitModel.find().then((arr) => res.json(arr));
