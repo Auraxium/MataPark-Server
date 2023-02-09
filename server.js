@@ -22,7 +22,7 @@ const URI =
 parkingUpdate();
 let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
 
-//attemps: 2
+//attemps: 3
 	 
 app.use(
   cors({
