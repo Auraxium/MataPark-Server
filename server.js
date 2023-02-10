@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
-const chromium = require('chromium');
+const chromium = require("chromium");
 var permitModel = mongoose.model(
   "Permit",
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
@@ -13,16 +13,14 @@ const URI =
 
 let lot_interval;
 
-
-
 //	chromium.install().then(() => parkingUpdate())
 //	parkingUpdate();
 
 parkingUpdate();
-let interval = setInterval(parkingUpdate, 8 * 1000 * 60);
+let interval = setInterval(parkingUpdate, 5 * 1000 * 60);
 
 //attemps: 3
-	 
+
 app.use(
   cors({
     origin: "*",
@@ -48,7 +46,7 @@ async function parkingUpdate() {
     console.log("--------------");
     const browser = await puppeteer.launch({
       executablePath: chromium.path,
-      headless: true
+      headless: true,
     });
     console.log("launched");
     const page = await browser.newPage();
