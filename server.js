@@ -11,7 +11,8 @@ var permitModel = mongoose.model(
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
-let interval = setInterval(parkingUpdate, 5 * 1000 * 60);
+	let lot_global;
+	let interval = setInterval(parkingUpdate, 5 * 1000 * 60);
 
 app.use(
   cors({
@@ -31,7 +32,6 @@ mongoose
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
 
-let lot_global;
 
 async function parkingUpdate() {
   try {
