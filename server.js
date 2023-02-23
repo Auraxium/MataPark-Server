@@ -39,7 +39,7 @@ mongoose
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
 
-let lot_global = {};
+let lot_global;
 
 async function parkingUpdate() {
   try {
@@ -86,7 +86,10 @@ app.get("/load", (req, res) => {
 });
 
 app.get("/parking-availability", async (req, res) => {
-  return res.json(lot_global);
+	if (!lots_global) 
+  	await parkingUpdate();
+		
+	return res.json(lot_global)
 });
 
 app.post("/save", (req, res) => {
