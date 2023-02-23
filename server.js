@@ -16,7 +16,7 @@ let lot_interval;
 //	chromium.install().then(() => parkingUpdate())
 //	parkingUpdate();
 
-parkingUpdate();
+//parkingUpdate();
 let interval = setInterval(parkingUpdate, 5 * 1000 * 60);
 
 //attemps: 3
