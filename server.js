@@ -97,8 +97,7 @@ app.get("/req1", (req, res) => {
     //     'Content-Type': 'application/json'
     //   }
     // })
-    .then((resu) => resu.json())
-    .then((data) => (randomArray[0] -= Math.random() * data["value"]))
+    .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
     .catch((err) => console.log(err))
     .finally(() => res.json({ value: Math.random() * randomArray[0] }));
 });
