@@ -79,7 +79,7 @@ app.get("/load", (req, res) => {
   permitModel.find().then((arr) => res.json(arr));
 });
 
-app.get("/req1", (req, res) => {
+app.post("/req1", (req, res) => {
   let val = req.body["value"];
   randomArray = [Math.random() * val];
 
