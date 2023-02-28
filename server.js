@@ -122,4 +122,5 @@ app.delete("/delete/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-app.listen(8080, null, () => console.log("Running"));
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, null, () => console.log("Running"));
