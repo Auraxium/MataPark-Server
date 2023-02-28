@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
-const chromium = require('chromium');
+const chromium = require("chromium");
 var permitModel = mongoose.model(
   "Permit",
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
@@ -11,16 +11,11 @@ var permitModel = mongoose.model(
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
-let lot_interval;
+	let lot_global;
+	let interval = setInterval(parkingUpdate, 5 * 1000 * 60);
 
-//	chromium.install().then(() => parkingUpdate())
-//	parkingUpdate();
+  let randomArray = [3];
 
-parkingUpdate();
-let interval = setInterval(parkingUpdate, 8 * 1000 * 60);
-
-//attemps: 3
-	 
 app.use(
   cors({
     origin: "*",
@@ -39,14 +34,13 @@ mongoose
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
 
-let lot_global = {};
 
 async function parkingUpdate() {
   try {
     console.log("--------------");
     const browser = await puppeteer.launch({
       executablePath: chromium.path,
-      headless: true
+      headless: true,
     });
     console.log("launched");
     const page = await browser.newPage();
@@ -85,8 +79,29 @@ app.get("/load", (req, res) => {
   permitModel.find().then((arr) => res.json(arr));
 });
 
+app.get("/req1", (req, res) => {
+  let val = req.body['value'];
+  randomArray = [Math.random() * val]
+  fetch('https://matapark-server.onrender.com' + '/req1', {
+    method: 'POST',
+    body: JSON.stringify({
+      value: Math.random() * randomArray[0]
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(resu => resu.json())
+  .then(data => randomArray[0] -= Math.random() * data['value'])
+  .catch(err => console.log(err) )
+  .finally(() => res.json({value: Math.random() * randomArray[0]}))
+});
+
 app.get("/parking-availability", async (req, res) => {
-  return res.json(lot_global);
+	if (!lot_global) 
+  	await parkingUpdate();
+		
+	return res.json(lot_global)
 });
 
 app.post("/save", (req, res) => {
