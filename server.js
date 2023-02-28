@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const axios = require("axios");
 const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
 const chromium = require("chromium");
@@ -11,10 +12,10 @@ var permitModel = mongoose.model(
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
-	let lot_global;
-	let interval = setInterval(parkingUpdate, 5 * 1000 * 60);
+let lot_global;
+let interval = setInterval(parkingUpdate, 5 * 1000 * 60);
 
-  let randomArray = [3];
+let randomArray = [3];
 
 app.use(
   cors({
@@ -33,7 +34,6 @@ mongoose
   })
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
-
 
 async function parkingUpdate() {
   try {
@@ -80,28 +80,33 @@ app.get("/load", (req, res) => {
 });
 
 app.get("/req1", (req, res) => {
-  let val = req.body['value'];
-  randomArray = [Math.random() * val]
-  fetch('https://mpserverhack.onrender.com' + '/req1', {
-    method: 'POST',
-    body: JSON.stringify({
-      value: Math.random() * randomArray[0]
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(resu => resu.json())
-  .then(data => randomArray[0] -= Math.random() * data['value'])
-  .catch(err => console.log(err) )
-  .finally(() => res.json({value: Math.random() * randomArray[0]}))
+  let val = req.body["value"];
+  randomArray = [Math.random() * val];
+
+  axios
+    .post("https://mpserverhack.onrender.com/req1", {
+      value: Math.random() * randomArray[0],
+    })
+
+    // fetch('https://mpserverhack.onrender.com' + '/req1', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     value: Math.random() * randomArray[0]
+    //   }),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    .then((resu) => resu.json())
+    .then((data) => (randomArray[0] -= Math.random() * data["value"]))
+    .catch((err) => console.log(err))
+    .finally(() => res.json({ value: Math.random() * randomArray[0] }));
 });
 
 app.get("/parking-availability", async (req, res) => {
-	if (!lot_global) 
-  	await parkingUpdate();
-		
-	return res.json(lot_global)
+  if (!lot_global) await parkingUpdate();
+
+  return res.json(lot_global);
 });
 
 app.post("/save", (req, res) => {
