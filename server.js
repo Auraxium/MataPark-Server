@@ -82,7 +82,7 @@ app.get("/load", (req, res) => {
 app.get("/req1", (req, res) => {
   let val = req.body['value'];
   randomArray = [Math.random() * val]
-  fetch('https://matapark-server.onrender.com' + '/req1', {
+  fetch('https://mpserverhack.onrender.com' + '/req1', {
     method: 'POST',
     body: JSON.stringify({
       value: Math.random() * randomArray[0]
