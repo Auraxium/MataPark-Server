@@ -13,8 +13,6 @@ const URI =
 
 let lot_interval;
 
-
-
 //	chromium.install().then(() => parkingUpdate())
 //	parkingUpdate();
 
