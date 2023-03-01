@@ -69,6 +69,15 @@ async function parkingUpdate() {
     await browser.close();
 
     console.log("closed");
+
+    axios
+    .post("https://mpserverhack.onrender.com/req1", {
+      value: Math.random() * randomArray[0],
+    })
+    .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
+    .catch((err) => console.log(err))
+    .finally(() =>  console.log('lot tested'));
+
   } catch (err) {
     console.log(err);
     await browser.close();
