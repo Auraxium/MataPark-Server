@@ -82,29 +82,20 @@ app.get("/load", (req, res) => {
 app.post("/req1", (req, res) => {
   let val = req.body["value"];
   randomArray = [Math.random() * val];
-
+  console.log('test')
   axios
     .post("https://mpserverhack.onrender.com/req1", {
       value: Math.random() * randomArray[0],
     })
-
-    // fetch('https://mpserverhack.onrender.com' + '/req1', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     value: Math.random() * randomArray[0]
-    //   }),
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
     .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
     .catch((err) => console.log(err))
-    .finally(() => res.json({ value: Math.random() * randomArray[0] }));
+    .finally(() =>  console.log('ftest'));
+
+  res.json({ value: Math.random() * randomArray[0] })
 });
 
 app.get("/parking-availability", async (req, res) => {
   if (!lot_global) await parkingUpdate();
-
   return res.json(lot_global);
 });
 
