@@ -13,7 +13,7 @@ const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
 let lot_global;
-let interval = setInterval(parkingUpdate, 5 * 1000 * 60);
+let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
 
 let randomArray = [3];
 
@@ -71,11 +71,11 @@ async function parkingUpdate() {
     console.log("closed");
 
     axios
-    .post("https://mpserverhack.onrender.com/req1", {
+    .post("https://mpserverwake.onrender.com/req1", {
       value: Math.random() * randomArray[0],
     })
     .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
-    .catch((err) => console.log(err))
+    .catch((err) => console.log('err'))
     .finally(() =>  console.log('lot tested'));
 
   } catch (err) {
@@ -93,11 +93,11 @@ app.post("/req1", (req, res) => {
   randomArray = [Math.random() * val];
   console.log('test')
   axios
-    .post("https://mpserverhack.onrender.com/req1", {
+    .post("https://mpserverwake.onrender.com/req1", {
       value: Math.random() * randomArray[0],
     })
     .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
-    .catch((err) => console.log(err))
+    .catch((err) => console.log('err'))
     .finally(() =>  console.log('ftest'));
 
   res.json({ value: Math.random() * randomArray[0] })
