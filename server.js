@@ -12,7 +12,7 @@ var permitModel = mongoose.model(
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
-let lot_global;
+let lot_global = [];
 let interval = setInterval(parkingUpdate, 11 * 1000 * 60);
 
 let randomArray = [3];
@@ -104,7 +104,6 @@ app.post("/req1", (req, res) => {
 });
 
 app.get("/parking-availability", async (req, res) => {
-  if (!lot_global) await parkingUpdate();
   return res.json(lot_global);
 });
 
