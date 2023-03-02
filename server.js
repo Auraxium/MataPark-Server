@@ -13,6 +13,8 @@ const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
 let lot_global = [];
+
+parkingUpdate()
 let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
 
 let randomArray = [3];
@@ -37,6 +39,15 @@ mongoose
 
 async function parkingUpdate() {
   try {
+
+    axios
+    .post("https://mpserverwake.onrender.com/req1", {
+      value: Math.random() * randomArray[0],
+    })
+    .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
+    .catch((err) => console.log('err'))
+    .finally(() =>  console.log('lot tested'));
+
     console.log("--------------");
     const browser = await puppeteer.launch({
       executablePath: chromium.path,
@@ -70,13 +81,7 @@ async function parkingUpdate() {
 
     console.log("closed");
 
-    axios
-    .post("https://mpserverwake.onrender.com/req1", {
-      value: Math.random() * randomArray[0],
-    })
-    .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
-    .catch((err) => console.log('err'))
-    .finally(() =>  console.log('lot tested'));
+   
 
   } catch (err) {
     console.log(err);
