@@ -13,7 +13,7 @@ const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
 let lot_global = [];
-let interval = setInterval(parkingUpdate, 11 * 1000 * 60);
+let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
 
 let randomArray = [3];
 
