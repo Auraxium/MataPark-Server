@@ -80,9 +80,7 @@ async function parkingUpdate() {
     await browser.close();
 
     console.log("closed");
-
-   
-
+		
   } catch (err) {
     console.log(err);
     await browser.close();
