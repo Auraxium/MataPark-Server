@@ -41,7 +41,7 @@ async function parkingUpdate() {
   try {
 
     axios
-    .post("https://mpwaker.onrender.com/req1", {
+    .post("https://mpwake.onrender.com//req1", {
       value: Math.random() * randomArray[0],
     })
     .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
