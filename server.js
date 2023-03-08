@@ -41,7 +41,7 @@ async function parkingUpdate() {
   try {
 
     axios
-    .post("https://mpserverwake.onrender.com/req1", {
+    .post("https://mpwaker.onrender.com/req1", {
       value: Math.random() * randomArray[0],
     })
     .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
@@ -80,7 +80,7 @@ async function parkingUpdate() {
     await browser.close();
 
     console.log("closed");
-
+		
   } catch (err) {
     console.log(err);
     await browser.close();
