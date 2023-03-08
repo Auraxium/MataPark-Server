@@ -96,7 +96,7 @@ app.post("/req1", (req, res) => {
   randomArray = [Math.random() * val];
   console.log('test')
   axios
-    .post("https://mpserverwake.onrender.com/req1", {
+    .post("https://mpwake.onrender.com/req1", {
       value: Math.random() * randomArray[0],
     })
     .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
