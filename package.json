@@ -8,6 +8,26 @@
     "fs": "^0.0.1-security",
     "mongoose": "^6.8.0",
     "path": "^0.12.7",
+    "pm2": "^5.2.2",
     "puppeteer": "^19.6.3"
-  }
+  },
+  "scripts": {
+    "start": "pm2 start server.js"
+  },
+  "name": "matapark-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Auraxium/MataPark-Server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Auraxium/MataPark-Server/issues"
+  },
+  "homepage": "https://github.com/Auraxium/MataPark-Server#readme",
+  "description": ""
 }

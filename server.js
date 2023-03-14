@@ -14,7 +14,7 @@ const URI =
 let lot_global = [];
 
 parkingUpdate()
-let interval = setInterval(parkingUpdate, 6 * 1000 * 60);
+let interval = setInterval(parkingUpdate, 8 * 1000 * 60);
 
 let randomArray = [3];
 
