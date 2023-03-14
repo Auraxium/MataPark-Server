@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const axios = require("axios");
 const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
 const chromium = require("chromium");
@@ -15,7 +14,7 @@ const URI =
 let lot_global = [];
 
 parkingUpdate()
-let interval = setInterval(parkingUpdate, 9 * 1000 * 60);
+let interval = setInterval(parkingUpdate, 6 * 1000 * 60);
 
 let randomArray = [3];
 
@@ -39,15 +38,6 @@ mongoose
 
 async function parkingUpdate() {
   try {
-
-    axios
-    .post("https://mpserverwake.onrender.com/req1", {
-      value: Math.random() * randomArray[0],
-    })
-    .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
-    .catch((err) => console.log('err'))
-    .finally(() =>  console.log('lot tested'));
-
     console.log("--------------");
     const browser = await puppeteer.launch({
       executablePath: chromium.path,
@@ -91,21 +81,6 @@ app.get("/load", (req, res) => {
   permitModel.find().then((arr) => res.json(arr));
 });
 
-app.post("/req1", (req, res) => {
-  let val = req.body["value"];
-  randomArray = [Math.random() * val];
-  console.log('test')
-  axios
-    .post("https://mpserverwake.onrender.com/req1", {
-      value: Math.random() * randomArray[0],
-    })
-    .then((data) => (randomArray[0] -= Math.random() * data.data["value"]))
-    .catch((err) => console.log('err'))
-    .finally(() =>  console.log('ftest'));
-
-  res.json({ value: Math.random() * randomArray[0] })
-});
-
 app.get("/parking-availability", async (req, res) => {
   return res.json(lot_global);
 });
@@ -128,5 +103,5 @@ app.delete("/delete/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 71176;
 app.listen(PORT, null, () => console.log("Running"));
