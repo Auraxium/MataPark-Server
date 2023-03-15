@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
-const chromium = require("chromium");
+const chromium = require("chrome-aws-lambda");
 var permitModel = mongoose.model(
   "Permit",
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
@@ -39,9 +39,12 @@ mongoose
 async function parkingUpdate() {
   try {
     console.log("--------------");
-    const browser = await puppeteer.launch({
-      executablePath: chromium.path,
+    browser = await chromium.puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
       headless: true,
+      ignoreHTTPSErrors: true,
     });
     console.log("launched");
     const page = await browser.newPage();
