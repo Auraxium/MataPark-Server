@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const puppeteer = require("puppeteer");
+const chromium = require("chromium");
 const mongoose = require("mongoose");
-const chromium = require("chrome-aws-lambda");
 var permitModel = mongoose.model(
   "Permit",
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
@@ -13,7 +13,10 @@ const URI =
 
 let lot_global = [];
 
-parkingUpdate()
+
+
+//parkingUpdate()
+chromium.install().then(parkingUpdate())
 let interval = setInterval(parkingUpdate, 8 * 1000 * 60);
 
 let randomArray = [3];
@@ -35,17 +38,19 @@ mongoose
   })
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
+  
+  console.log(chromium.path)
+  console.log(__dirname)
 
 async function parkingUpdate() {
   try {
     console.log("--------------");
-    browser = await chromium.puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath,
-      headless: true,
-      ignoreHTTPSErrors: true,
+		
+    const browser = await puppeteer.launch({
+      executablePath: chromium.path,
+      userDataDir: __dirname
     });
+
     console.log("launched");
     const page = await browser.newPage();
     console.log("new page");
