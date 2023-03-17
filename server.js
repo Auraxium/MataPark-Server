@@ -1,4 +1,3 @@
-const chromium = require("chromium");
 const puppeteer = require("puppeteer");
 
 let lots = []

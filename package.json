@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "chromium": "^3.0.3",
     "puppeteer": "^19.7.5"
   },
   "scripts": {
