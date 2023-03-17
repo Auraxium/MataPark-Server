@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const puppeteer = require("puppeteer");
 const chromium = require("chromium");
+const puppeteer = require("puppeteer");
 const mongoose = require("mongoose");
 var permitModel = mongoose.model(
   "Permit",
@@ -13,10 +13,8 @@ const URI =
 
 let lot_global = [];
 
+parkingUpdate()
 
-
-//parkingUpdate()
-chromium.install().then(parkingUpdate())
 let interval = setInterval(parkingUpdate, 8 * 1000 * 60);
 
 let randomArray = [3];
@@ -39,7 +37,7 @@ mongoose
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
   
-  console.log(chromium.path)
+  console.log()
   console.log(__dirname)
 
 async function parkingUpdate() {
@@ -47,8 +45,8 @@ async function parkingUpdate() {
     console.log("--------------");
 		
     const browser = await puppeteer.launch({
-      executablePath: chromium.path,
-      userDataDir: __dirname
+     // userDataDir: __dirname,
+     args: ['--disable-setuid-sandbox', '--no-sandbox']
     });
 
     console.log("launched");
@@ -112,4 +110,4 @@ app.delete("/delete/:id", (req, res) => {
 });
 
 const PORT = process.env.PORT || 7176;
-app.listen(PORT, null, () => console.log("Running"));
+app.listen(PORT, null, () => console.log("Running om port:" + PORT));
