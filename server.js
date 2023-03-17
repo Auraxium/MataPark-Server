@@ -29,13 +29,13 @@ app.use(
 );
 app.use(express.json());
 
-mongoose
-  .connect(URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("connected to database"))
-  .catch((err) => console.log(err));
+// mongoose
+//   .connect(URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("connected to database"))
+//   .catch((err) => console.log(err));
   
   console.log()
   console.log(__dirname)
