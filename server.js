@@ -1,44 +1,5 @@
-const express = require("express");
-const app = express();
-const cors = require("cors");
 const chromium = require("chromium");
 const puppeteer = require("puppeteer");
-const mongoose = require("mongoose");
-var permitModel = mongoose.model(
-  "Permit",
-  new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
-);
-const URI =
-  "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
-
-let lot_global = [];
-
-parkingUpdate()
-
-let interval = setInterval(parkingUpdate, 8 * 1000 * 60);
-
-let randomArray = [3];
-
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-    methods: "*",
-    headers: "*",
-  })
-);
-app.use(express.json());
-
-// mongoose
-//   .connect(URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("connected to database"))
-//   .catch((err) => console.log(err));
-  
-  console.log()
-  console.log(__dirname)
 
 async function parkingUpdate() {
   try {
@@ -83,31 +44,4 @@ async function parkingUpdate() {
   }
 }
 
-app.get("/load", (req, res) => {
-  permitModel.find().then((arr) => res.json(arr));
-});
-
-app.get("/parking-availability", async (req, res) => {
-  return res.json(lot_global);
-});
-
-app.post("/save", (req, res) => {
-  console.log(req.body);
-  let permit = new permitModel(req.body);
-  console.log(permit);
-  permit
-    .save()
-    .then(() => res.json("Permit added"))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
-app.delete("/delete/:id", (req, res) => {
-  console.log("test");
-  permitModel
-    .findByIdAndDelete(req.params.id)
-    .then(() => console.log("deleted permit"))
-    .catch((err) => console.log(err));
-});
-
-const PORT = process.env.PORT || 7176;
-app.listen(PORT, null, () => console.log("Running om port:" + PORT));
+parkingUpdate()
