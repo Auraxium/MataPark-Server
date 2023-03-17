@@ -78,7 +78,7 @@ async function parkingUpdate() {
     console.log("closed");
 		
   } catch (err) {
-    console.log('error occurred');
+    console.log(err);
     await browser.close();
   }
 }
