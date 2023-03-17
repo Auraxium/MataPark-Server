@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const puppeteer = require("puppeteer");
-const mongoose = require("mongoose");
 const chromium = require("chromium");
+const mongoose = require("mongoose");
 var permitModel = mongoose.model(
   "Permit",
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
@@ -14,6 +14,7 @@ const URI =
 let lot_global = [];
 
 parkingUpdate()
+
 let interval = setInterval(parkingUpdate, 8 * 1000 * 60);
 
 let randomArray = [3];
@@ -35,14 +36,19 @@ mongoose
   })
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
+  
+  console.log()
+  console.log(__dirname)
 
 async function parkingUpdate() {
   try {
     console.log("--------------");
+		
     const browser = await puppeteer.launch({
-      executablePath: chromium.path,
-      headless: true,
+     // userDataDir: __dirname,
+     args: ['--disable-setuid-sandbox', '--no-sandbox']
     });
+
     console.log("launched");
     const page = await browser.newPage();
     console.log("new page");
@@ -104,4 +110,4 @@ app.delete("/delete/:id", (req, res) => {
 });
 
 const PORT = process.env.PORT || 7176;
-app.listen(PORT, null, () => console.log("Running"));
+app.listen(PORT, null, () => console.log("Running om port:" + PORT));

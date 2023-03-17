@@ -1,0 +1,12 @@
+Header set Access-Control-Allow-Origin "*"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/auraxium/mpserver.auraxium.online/MataPark-Server"
+PassengerBaseURI "/"
+PassengerNodejs "/home/auraxium/nodevenv/mpserver.auraxium.online/MataPark-Server/18/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
