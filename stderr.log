@@ -1,0 +1,559 @@
+node:internal/modules/cjs/loader:958
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js
+- /usr/local/lsws/fcgi-bin/lsnode.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:955:15)
+    at Module._load (node:internal/modules/cjs/loader:803:27)
+    at Module.require (node:internal/modules/cjs/loader:1021:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1119:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1173:10)
+    at Module.load (node:internal/modules/cjs/loader:997:32)
+    at Module._load (node:internal/modules/cjs/loader:838:12)
+    at Module.require (node:internal/modules/cjs/loader:1021:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js',
+    '/usr/local/lsws/fcgi-bin/lsnode.js'
+  ]
+}
+
+Node.js v18.9.1
+node:internal/modules/cjs/loader:958
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js
+- /usr/local/lsws/fcgi-bin/lsnode.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:955:15)
+    at Module._load (node:internal/modules/cjs/loader:803:27)
+    at Module.require (node:internal/modules/cjs/loader:1021:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1119:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1173:10)
+    at Module.load (node:internal/modules/cjs/loader:997:32)
+    at Module._load (node:internal/modules/cjs/loader:838:12)
+    at Module.require (node:internal/modules/cjs/loader:1021:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js',
+    '/usr/local/lsws/fcgi-bin/lsnode.js'
+  ]
+}
+
+Node.js v18.9.1
+(node:1122235) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1122260) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1122493) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1122523) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1122551) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1122575) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1122599) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1124430) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1124466) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1124497) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1124581) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1124605) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1124632) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1125048) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1125086) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1125905) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1125933) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1125963) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126683) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126712) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126740) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126766) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126788) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126839) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126864) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126893) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126919) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1126952) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:76:5)
+
+Node.js v18.9.1
+(node:1162840) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1163024) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+BrokenPipeError: [Errno 32] Broken pipe
+(node:1163075) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1163099) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1163127) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1163151) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1163398) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1163426) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1164136) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1164162) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1164187) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1182995) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1183024) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+BrokenPipeError: [Errno 32] Broken pipe
+(node:1183343) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1183368) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+(node:1183393) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:79:5)
+
+Node.js v18.9.1
+node:internal/modules/cjs/loader:958
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js
+- /usr/local/lsws/fcgi-bin/lsnode.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:955:15)
+    at Module._load (node:internal/modules/cjs/loader:803:27)
+    at Module.require (node:internal/modules/cjs/loader:1021:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1119:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1173:10)
+    at Module.load (node:internal/modules/cjs/loader:997:32)
+    at Module._load (node:internal/modules/cjs/loader:838:12)
+    at Module.require (node:internal/modules/cjs/loader:1021:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js',
+    '/usr/local/lsws/fcgi-bin/lsnode.js'
+  ]
+}
+
+Node.js v18.9.1
+node:internal/modules/cjs/loader:958
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js
+- /usr/local/lsws/fcgi-bin/lsnode.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:955:15)
+    at Module._load (node:internal/modules/cjs/loader:803:27)
+    at Module.require (node:internal/modules/cjs/loader:1021:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at Object.<anonymous> (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1119:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1173:10)
+    at Module.load (node:internal/modules/cjs/loader:997:32)
+    at Module._load (node:internal/modules/cjs/loader:838:12)
+    at Module.require (node:internal/modules/cjs/loader:1021:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js',
+    '/usr/local/lsws/fcgi-bin/lsnode.js'
+  ]
+}
+
+Node.js v18.9.1
+(node:1328879) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:81
+    await browser.close();
+    ^
+
+ReferenceError: browser is not defined
+    at parkingUpdate (/home/auraxium/mpserver.auraxium.online/MataPark-Server/server.js:81:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+Node.js v18.9.1
