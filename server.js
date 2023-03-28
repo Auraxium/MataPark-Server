@@ -10,6 +10,8 @@ const permitModel = mongoose.model(
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
 );
 
+let pypath = process.env.PYPATH || './parkingUpdate.py'
+
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
@@ -39,7 +41,7 @@ mongoose
   .catch((err) => console.log(err));
 
 function parkUpdate() {
-  const py = spawn("python", ["./parkingUpdate.py"]);
+  const py = spawn("python", [pypath]);
   py.stdout.on("data", (data) => {
     try {
       park_data = JSON.parse(data.toString());
