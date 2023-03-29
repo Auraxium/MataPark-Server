@@ -22,7 +22,7 @@ let park_data = {
   now: 0
 };
 
-parkUpdate();
+//parkUpdate();
 console.error('hey doofus')
 
 fs.readdirSync('./').forEach(file => console.log(file));
