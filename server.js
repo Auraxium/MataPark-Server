@@ -5,6 +5,7 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const { spawn } = require("child_process");
 const {google} = require("googleapis")
+const fs = require('fs')
 
 const permitModel = mongoose.model(
   "Permit",
@@ -22,6 +23,9 @@ let park_data = {
 };
 
 parkUpdate();
+console.error('hey doofus')
+
+fs.readdirSync('./').forEach(file => console.log(file));
 
 app.use(
   cors({
@@ -42,6 +46,7 @@ mongoose
   .catch((err) => console.log(err));
 
 function parkUpdate() {
+  console.log('its ' + new Date())
   const py = spawn("python", [pypath]);
   py.stdout.on("data", (data) => {
     try {
