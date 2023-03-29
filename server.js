@@ -4,6 +4,7 @@ const cors = require("cors");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const { spawn } = require("child_process");
+const {google} = require("googleapis")
 
 const permitModel = mongoose.model(
   "Permit",
@@ -80,6 +81,60 @@ app.delete("/delete/:id", (req, res) => {
     .findByIdAndDelete(req.params.id)
     .then(() => console.log("deleted permit"))
     .catch((err) => console.log(err));
+});
+
+const googCID =
+  "719494722130-n99p2h6d0masuhqijn6u4gdu7174ofir.apps.googleusercontent.com";
+const googCS = "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";
+
+let googCache = {};
+
+const GOauth = new google.auth.OAuth2(
+  googCID,
+  googCS,
+  URL + "/googOauth/callback"
+);
+
+app.post("/googOauth", (req, res) => {
+  googCache[req.body.uuid] = { origin: req.body.origin };
+  const googAuthUrl = GOauth.generateAuthUrl({
+    access_type: "offline",
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+    ],
+    include_granted_scopes: true,
+    state: req.body.uuid,
+  });
+  res.json({ url: googAuthUrl });
+});
+
+app.get("/googOauth/callback", async (req, res) => {
+  session = req.query.state;
+  const response = await GOauth.getToken(req.query.code);
+  GOauth.setCredentials({
+    access_token: response.tokens.access_token,
+    refresh_token: response.tokens.refresh_token,
+  });
+  let ax = await axios(
+    "https://people.googleapis.com/v1/people/me?personFields=names",
+    {
+      headers: {
+        Authorization: `Bearer ${response.tokens.access_token}`,
+      },
+    }
+  );
+  googCache[session]["googleId"] = ax.data.names[0].metadata.source.id;
+  googCache[session]["username"] = ax.data.names[0].displayName;
+  googCache[session]["now"] = Date.now();
+  res.redirect(googCache[session]["origin"]);
+});
+
+app.post("/googGetToken", (req, res) => {
+  let token = googCache[req.body.uuid];
+  console.log(token);
+  delete googCache[req.body.uuid];
+  return res.json(token);
 });
 
 const PORT = process.env.PORT || 8080;
