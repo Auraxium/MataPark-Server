@@ -91,8 +91,8 @@ app.delete("/delete/:id", (req, res) => {
 //#region ----------------GOOGLE--------------------
 
 const googCID =
-  "719494722130-n99p2h6d0masuhqijn6u4gdu7174ofir.apps.googleusercontent.com";
-const googCS = "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";
+  "719494722130-1hnnd17h7m5cjsa7st9tlqi9dptdnmmo.apps.googleusercontent.com";
+const googCS = "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";
 
 let googCache = {};
 
