@@ -8,5 +8,8 @@
     "fs": "^0.0.1-security",
     "googleapis": "^114.0.0",
     "mongoose": "^6.8.0"
+  },
+  "scripts": {
+    "output": "node server.js >> stdout.log"
   }
 }

@@ -13,7 +13,7 @@ const permitModel = mongoose.model(
 );
 
 let pypath = process.env.PYPATH || './parkingUpdate.py'
-
+const hostUrl = process.env.HURL || 'http://localhost:8080'
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
@@ -47,7 +47,7 @@ mongoose
 
 function parkUpdate() {
   console.log('its ' + new Date())
-  const py = spawn("python", [pypath]);
+  const py = spawn("python", ['../park/parkingUpdate.py']);
   py.stdout.on("data", (data) => {
     try {
       park_data = JSON.parse(data.toString());
@@ -88,6 +88,8 @@ app.delete("/delete/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//#region ----------------GOOGLE--------------------
+
 const googCID =
   "719494722130-n99p2h6d0masuhqijn6u4gdu7174ofir.apps.googleusercontent.com";
 const googCS = "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";
@@ -97,7 +99,7 @@ let googCache = {};
 const GOauth = new google.auth.OAuth2(
   googCID,
   googCS,
-  URL + "/googOauth/callback"
+   hostUrl+ "/googOauth/callback"
 );
 
 app.post("/googOauth", (req, res) => {
@@ -141,6 +143,8 @@ app.post("/googGetToken", (req, res) => {
   delete googCache[req.body.uuid];
   return res.json(token);
 });
+
+//#endregion
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, null, () => console.log("Running"));
