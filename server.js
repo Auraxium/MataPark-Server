@@ -3,7 +3,6 @@ const app = express();
 const cors = require("cors");
 const axios = require("axios");
 const mongoose = require("mongoose");
-const { spawn } = require("child_process");
 const {google} = require("googleapis")
 const fs = require('fs')
 
@@ -12,45 +11,13 @@ const permitModel = mongoose.model(
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
 );
 
-let pypath = process.env.PYPATH || './parkingUpdate.py'
 const hostUrl = process.env.HURL || 'http://localhost:8080'
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
-let park_data = {
-  lot: [],
-  now: 0
-};
-
-const request = require('request');
-
-const pythonFileUrl = 'http://mpserver.auraxium.online/parkingUpdate.py';
-
-request(pythonFileUrl, (error, response, body) => {
-  if (error) {
-    console.error(`Failed to execute Python file: ${error}`);
-    return;
-  }
-  
-  const pythonProcess = spawn('python', ['-c', body]);
-  
-  pythonProcess.stdout.on('data', (data) => {
-    console.error(`Received data from Python: ${data}`);
-  });
-  
-  pythonProcess.stderr.on('data', (data) => {
-    console.error(`Error from Python: ${data}`);
-  });
-  
-  pythonProcess.on('close', (code) => {
-    console.error(`Python process exited with code ${code}`);
-  });
-});
-
-//parkUpdate();
 console.error(new Date())
 
-fs.readdirSync('./').forEach(file => console.log(file));
+// fs.readdirSync('./').forEach(file => console.log(file));
 
 app.use(
   cors({
@@ -70,29 +37,8 @@ mongoose
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
 
-function parkUpdate() {
-  console.log('its ' + new Date())
-  const py = spawn("python", ['./parkingUpdate.py']);
-  py.stdout.on("data", (data) => {
-    try {
-      park_data = JSON.parse(data.toString());
-      return park_data;
-    } catch (err){
-      console.log(err)
-      res.status(500).send(err);
-    }
-  });
-}
-
 app.get("/load", (req, res) => {
   permitModel.find().then((arr) => res.json(arr));
-});
-
-app.get("/parkmap", (req, res) => {
-  if (Date.now() - park_data.now > 300000) 
-    parkUpdate()
-
-  res.json(park_data);  
 });
 
 app.post("/save", (req, res) => {
