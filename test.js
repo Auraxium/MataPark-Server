@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 const request = require('request');
 
-const pythonFileUrl = 'https://auraxium.online/parkingUpdate.py';
+const pythonFileUrl = 'http://mpserver.auraxium.online/parkingUpdate.py';
 
 request(pythonFileUrl, (error, response, body) => {
   if (error) {
