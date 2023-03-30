@@ -48,7 +48,7 @@ request(pythonFileUrl, (error, response, body) => {
 });
 
 parkUpdate();
-console.error('hey doofus')
+console.error(new Date())
 
 fs.readdirSync('./').forEach(file => console.log(file));
 
