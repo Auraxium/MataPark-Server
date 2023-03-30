@@ -35,7 +35,7 @@ request(pythonFileUrl, (error, response, body) => {
   const pythonProcess = spawn('python', ['-c', body]);
   
   pythonProcess.stdout.on('data', (data) => {
-    console.log(`Received data from Python: ${data}`);
+    console.error(`Received data from Python: ${data}`);
   });
   
   pythonProcess.stderr.on('data', (data) => {
@@ -43,11 +43,11 @@ request(pythonFileUrl, (error, response, body) => {
   });
   
   pythonProcess.on('close', (code) => {
-    console.log(`Python process exited with code ${code}`);
+    console.error(`Python process exited with code ${code}`);
   });
 });
 
-parkUpdate();
+//parkUpdate();
 console.error(new Date())
 
 fs.readdirSync('./').forEach(file => console.log(file));
