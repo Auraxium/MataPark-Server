@@ -72,7 +72,7 @@ mongoose
 
 function parkUpdate() {
   console.log('its ' + new Date())
-  const py = spawn("python", ['../park/parkingUpdate.py']);
+  const py = spawn("python", ['./parkingUpdate.py']);
   py.stdout.on("data", (data) => {
     try {
       park_data = JSON.parse(data.toString());
