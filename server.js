@@ -90,10 +90,6 @@ app.post("/googOauth", (req, res) => {
 app.get("/googOauth/callback", async (req, res) => {
   let session = req.query.state;
   const response = await GOauth.getToken(req.query.code);
-  GOauth.setCredentials({
-    access_token: response.tokens.access_token,
-    refresh_token: response.tokens.refresh_token,
-  });
   let ax = await axios(
     "https://people.googleapis.com/v1/people/me?personFields=names",
     {
