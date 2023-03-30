@@ -88,7 +88,7 @@ app.post("/googOauth", (req, res) => {
 });
 
 app.get("/googOauth/callback", async (req, res) => {
-  session = req.query.state;
+  let session = req.query.state;
   const response = await GOauth.getToken(req.query.code);
   GOauth.setCredentials({
     access_token: response.tokens.access_token,
