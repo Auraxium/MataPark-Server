@@ -11,13 +11,16 @@ const permitModel = mongoose.model(
   new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
 );
 
+const userModel = mongoose.model(
+  "User",
+  new mongoose.Schema({_id: mongoose.Mixed, data: mongoose.Mixed})
+);
+
 const hostUrl = process.env.HURL || 'http://localhost:8080'
 const URI =
   "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
 
-console.error(new Date())
-
-// fs.readdirSync('./').forEach(file => console.log(file));
+console.error(new Date());
 
 app.use(
   cors({
@@ -58,6 +61,26 @@ app.delete("/delete/:id", (req, res) => {
     .then(() => console.log("deleted permit"))
     .catch((err) => console.log(err));
 });
+
+app.post("/saveData", (req,res) => {
+  let data = {_id: req.body._id, data: req.body.data}
+  userModel.findById(req.body._id)
+  .then(user => {
+    if(!user) {
+      let init = new userModel(data)
+      init.save()
+      return res.send("Saved user")
+    }
+    user.data = data;
+    user.save()
+    return res.status(200).send("Saved user")
+  })
+  .catch(err => res.send(err))
+})
+
+app.post("/loadData", (req,res) => {
+  mongoose
+})
 
 //#region ----------------GOOGLE--------------------
 
