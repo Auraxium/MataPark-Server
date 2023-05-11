@@ -16,14 +16,23 @@ const userModel = mongoose.model(
   new mongoose.Schema({_id: mongoose.Mixed, data: mongoose.Mixed})
 );
 
-const lotStatusSchema = new mongoose.Schema({
-  lotId: String,
-  status: String,
-  lastUpdated: {
+const lotStatusSchema = new Schema({
+  lotId: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    enum: ["Full", "Almost Full", "OK"],
+    required: true,
+  },
+  reportTime: {
     type: Date,
+    required: true,
     default: Date.now,
   },
 });
+
 
 const lotStatusModel = mongoose.model("LotStatus", lotStatusSchema);
 
@@ -94,8 +103,8 @@ app.post("/loadData", (req,res) => {
 })
 
 app.post("/saveLotStatus", (req, res) => {
-  const { lotId, status } = req.body;
-  let lotStatus = new lotStatusModel({ lotId, status });
+  const { name, status, reportTime } = req.body;
+  let lotStatus = new lotStatusModel({ name, status, reportTime });
   lotStatus
     .save()
     .then(() => res.json("Lot status added"))
@@ -103,8 +112,9 @@ app.post("/saveLotStatus", (req, res) => {
 });
 
 app.get("/loadLotStatus", (req, res) => {
-  lotStatusModel.find().then((arr) => res.json(arr));
+  lotStatusModel.find().then((arr) => res.json(arr.map(({ name, status, reportTime }) => ({ name, status, reportTime }))));
 });
+
 
 //#region ----------------GOOGLE--------------------
 
