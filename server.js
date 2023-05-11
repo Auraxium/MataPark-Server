@@ -16,6 +16,17 @@ const userModel = mongoose.model(
   new mongoose.Schema({_id: mongoose.Mixed, data: mongoose.Mixed})
 );
 
+const lotStatusSchema = new mongoose.Schema({
+  lotId: String,
+  status: String,
+  lastUpdated: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+const lotStatusModel = mongoose.model("LotStatus", lotStatusSchema);
+
 const hostUrl = process.env.HURL || 'http://localhost:8080'
 const URI =
 "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/matapark?retryWrites=true&w=majority";
@@ -35,6 +46,7 @@ mongoose
   .connect(URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
@@ -80,6 +92,19 @@ app.post("/saveData", (req,res) => {
 app.post("/loadData", (req,res) => {
   mongoose
 })
+
+app.post("/saveLotStatus", (req, res) => {
+  const { lotId, status } = req.body;
+  let lotStatus = new lotStatusModel({ lotId, status });
+  lotStatus
+    .save()
+    .then(() => res.json("Lot status added"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+app.get("/loadLotStatus", (req, res) => {
+  lotStatusModel.find().then((arr) => res.json(arr));
+});
 
 //#region ----------------GOOGLE--------------------
 
