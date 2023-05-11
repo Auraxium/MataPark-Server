@@ -22,6 +22,7 @@ const lotStatusSchema = new Schema({
   lotId: {
     type: String,
     required: true,
+    unique: true,
   },
   status: {
     type: String,
@@ -54,6 +55,7 @@ app.use(express.json());
 
 mongoose
   .connect(URI, {
+    dbName: 'matapark',
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
