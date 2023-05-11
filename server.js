@@ -97,11 +97,6 @@ app.post("/saveLotStatus", (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
-});
-
-
 //#region ----------------GOOGLE--------------------
 
 const googCID =
