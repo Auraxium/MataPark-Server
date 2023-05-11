@@ -40,7 +40,7 @@ const lotStatusModel = mongoose.model("LotStatus", lotStatusSchema);
 
 const hostUrl = process.env.HURL || "http://localhost:8080";
 const URI =
-  "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/matapark?retryWrites=true&w=majority";
 console.error(new Date());
 
 app.use(
