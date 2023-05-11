@@ -3,8 +3,10 @@ const app = express();
 const cors = require("cors");
 const axios = require("axios");
 const mongoose = require("mongoose");
-const {google} = require("googleapis")
-const fs = require('fs')
+const { google } = require("googleapis");
+const fs = require("fs");
+
+const Schema = mongoose.Schema;
 
 const permitModel = mongoose.model(
   "Permit",
@@ -13,7 +15,7 @@ const permitModel = mongoose.model(
 
 const userModel = mongoose.model(
   "User",
-  new mongoose.Schema({_id: mongoose.Mixed, data: mongoose.Mixed})
+  new mongoose.Schema({ _id: mongoose.Mixed, data: mongoose.Mixed })
 );
 
 const lotStatusSchema = new Schema({
@@ -33,12 +35,11 @@ const lotStatusSchema = new Schema({
   },
 });
 
-
 const lotStatusModel = mongoose.model("LotStatus", lotStatusSchema);
 
-const hostUrl = process.env.HURL || 'http://localhost:8080'
+const hostUrl = process.env.HURL || "http://localhost:8080";
 const URI =
-"mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/matapark?retryWrites=true&w=majority";
+  "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/matapark?retryWrites=true&w=majority";
 console.error(new Date());
 
 app.use(
@@ -78,41 +79,26 @@ app.delete("/delete/:id", (req, res) => {
   console.log("test");
   permitModel
     .findByIdAndDelete(req.params.id)
-    .then(() => console.log("deleted permit"))
+    .then(() => console.log("deleted..."))
     .catch((err) => console.log(err));
 });
 
-app.post("/saveData", (req,res) => {
-  let data = {_id: req.body._id, data: req.body.data}
-  userModel.findById(req.body._id)
-  .then(user => {
-    if(!user) {
-      let init = new userModel(data)
-      init.save()
-      return res.send("Saved user")
-    }
-    user.data = data;
-    user.save()
-    return res.status(200).send("Saved user")
-  })
-  .catch(err => res.send(err))
-})
-
-app.post("/loadData", (req,res) => {
-  mongoose
-})
+app.get("/loadLotStatus", (req, res) => {
+  lotStatusModel.find().then((arr) => res.json(arr));
+});
 
 app.post("/saveLotStatus", (req, res) => {
-  const { name, status, reportTime } = req.body;
-  let lotStatus = new lotStatusModel({ name, status, reportTime });
+  console.log(req.body);
+  let lotStatus = new lotStatusModel(req.body);
+  console.log(lotStatus);
   lotStatus
     .save()
     .then(() => res.json("Lot status added"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-app.get("/loadLotStatus", (req, res) => {
-  lotStatusModel.find().then((arr) => res.json(arr.map(({ name, status, reportTime }) => ({ name, status, reportTime }))));
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
 });
 
 
