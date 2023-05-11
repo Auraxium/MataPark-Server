@@ -63,6 +63,10 @@ mongoose
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
 
+app.get("/", (req, res) => {
+  res.send("Database Connected!");
+});
+
 app.get("/load", (req, res) => {
   permitModel.find().then((arr) => res.json(arr));
 });
