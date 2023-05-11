@@ -58,7 +58,7 @@ mongoose
     dbName: 'matapark',
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
+    // useFindAndModify: false,
   })
   .then(() => console.log("connected to database"))
   .catch((err) => console.log(err));
@@ -90,7 +90,7 @@ app.delete("/delete/:id", (req, res) => {
 });
 
 app.get("/loadLotStatus", (req, res) => {
-  lotStatusModel.find().then((arr) => res.json(arr));
+  lotStatusModel.find().then((arr) => res.json(arr)).catch(err => res.json('loadlotstatus didnt work'));
 });
 
 app.post("/saveLotStatus", (req, res) => {
@@ -102,6 +102,27 @@ app.post("/saveLotStatus", (req, res) => {
     .then(() => res.json("Lot status added"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+
+app.post("/saveData", (req,res) => {
+  let data = {_id: req.body._id, data: req.body.data}
+  userModel.findById(req.body._id)
+  .then(user => {
+    if(!user) {
+      let init = new userModel(data)
+      init.save()
+      return res.send("Saved user")
+    }
+    user.data = data;
+    user.save()
+    return res.status(200).send("Saved user")
+  })
+  .catch(err => res.send(err))
+})
+
+app.post("/loadData", (req,res) => {
+  // mongoose
+})
+
 
 //#region ----------------GOOGLE--------------------
 
