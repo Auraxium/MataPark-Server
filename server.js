@@ -94,13 +94,42 @@ app.get("/loadLotStatus", (req, res) => {
 });
 
 app.post("/saveLotStatus", (req, res) => {
-  console.log(req.body);
-  let lotStatus = new lotStatusModel(req.body);
-  console.log(lotStatus);
-  lotStatus
-    .save()
-    .then(() => res.json("Lot status added"))
-    .catch((err) => res.status(400).json("Error: " + err));
+  const lotData = req.body;
+
+  // Check if lot with given lotId already exists
+  lotStatusModel.findOne({ lotId: lotData.lotId }, (err, lot) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+    } else {
+      if (lot) {
+        // If lot exists, update status and reportTime
+        lot.status = lotData.status;
+        lot.reportTime = lotData.reportTime;
+        lot.save((err) => {
+          if (err) {
+            console.log(err);
+            res.status(500).send(err);
+          } else {
+            console.log(`Updated lot status for lotId ${lotData.lotId}`);
+            res.status(200).send(`Updated lot status for lotId ${lotData.lotId}`);
+          }
+        });
+      } else {
+        // If lot doesn't exist, create new document
+        const newLotStatus = new lotStatusModel(lotData);
+        newLotStatus.save((err) => {
+          if (err) {
+            console.log(err);
+            res.status(500).send(err);
+          } else {
+            console.log(`Saved new lot status for lotId ${lotData.lotId}`);
+            res.status(200).send(`Saved new lot status for lotId ${lotData.lotId}`);
+          }
+        });
+      }
+    }
+  });
 });
 
 app.post("/saveData", (req,res) => {
