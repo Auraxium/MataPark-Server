@@ -1,10 +1,11 @@
-const express = require("express");
+ const express = require("express");
 const app = express();
 const cors = require("cors");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const { google } = require("googleapis");
 const fs = require("fs");
+const cheerio = require('cheerio')
 
 const Schema = mongoose.Schema;
 
@@ -80,6 +81,55 @@ app.post("/save", (req, res) => {
     .then(() => res.json("Permit added"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+
+app.post('/parkmap', async (req, res) => {
+	let {data} = axios("https://m.csun.edu/alumni_community/find_parking/index");
+	console.log(data);
+	res.end()
+
+// global data
+// data = {
+//     'lots': [],
+//     'date': 0
+// }
+
+// async def parkingUpdate():
+//     try:
+//         print("--------------")
+
+//         url = "https://m.csun.edu/alumni_community/find_parking/index"
+//         response = requests.get(url)
+//         soup = BeautifulSoup(response.text, 'html.parser')
+
+//         query = []
+//         rows = soup.select("tr.kgoui_object.kgoui_table_table_row")
+//         for row in rows:
+//             lot = row.select_one(
+//                 ":first-child div a div .kgo-title :first-child strong").text
+//             slots = row.select_one(
+//                 ":nth-child(2) div a div .kgo-title :first-child span").text
+//             query.append({"lot": lot, "slots": slots})
+
+//         data['lots'] = query
+//         data['date'] = int(time.time() * 1000)
+
+//     except Exception as err:
+//         print(err)
+
+// app = Flask(__name__)
+
+// @app.route("/parkmap")
+// async def parkmap():
+//     if (int(time.time()*1000) - data['date']) > 300000:
+//         print(data['date'])
+//         await parkingUpdate()
+
+//     return data
+
+
+// if __name__ == "__main__":
+//     app.run()
+})
 
 app.delete("/delete/:id", (req, res) => {
   console.log("test");
