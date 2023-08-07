@@ -1,24 +1,15 @@
- const express = require("express");
+const express = require("express");
 const app = express();
 const cors = require("cors");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const { google } = require("googleapis");
 const fs = require("fs");
-const cheerio = require('cheerio')
+const cheerio = require("cheerio");
 
 const Schema = mongoose.Schema;
-
-const permitModel = mongoose.model(
-  "Permit",
-  new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed })
-);
-
-const userModel = mongoose.model(
-  "User",
-  new mongoose.Schema({ _id: mongoose.Mixed, data: mongoose.Mixed })
-);
-
+const permitModel = mongoose.model("Permit", new mongoose.Schema({ license: mongoose.Mixed, expires: mongoose.Mixed }));
+const userModel = mongoose.model("User", new mongoose.Schema({ _id: mongoose.Mixed, data: mongoose.Mixed }));
 const lotStatusSchema = new Schema({
   lotId: {
     type: String,
@@ -36,12 +27,10 @@ const lotStatusSchema = new Schema({
     default: Date.now,
   },
 });
-
 const lotStatusModel = mongoose.model("LotStatus", lotStatusSchema);
 
 const hostUrl = process.env.HURL || "http://localhost:8080";
-const URI =
-  "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/matapark?retryWrites=true&w=majority";
+const URI = "mongodb+srv://Lemond:z6WKxBTkHFuLUEKi@cluster0.cb5agdt.mongodb.net/matapark?retryWrites=true&w=majority";
 console.error(new Date());
 
 app.use(
@@ -56,7 +45,7 @@ app.use(express.json());
 
 mongoose
   .connect(URI, {
-    dbName: 'matapark',
+    dbName: "matapark",
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useFindAndModify: false,
@@ -82,57 +71,33 @@ app.post("/save", (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-app.post('/parkmap', async (req, res) => {
-	let {data} = axios("https://m.csun.edu/alumni_community/find_parking/index");
-	console.log(data);
-	res.end()
+let parkmap = {
+  lots: [],
+  date: 0,
+};
 
-// global data
-// data = {
-//     'lots': [],
-//     'date': 0
-// }
+async function parkingUpdate() {
+	let { data } = await axios("https://m.csun.edu/alumni_community/find_parking/index");
+  let $ = cheerio.load(data);
 
-// async def parkingUpdate():
-//     try:
-//         print("--------------")
+  let lots = [];
+  $("tr.kgoui_object.kgoui_table_table_row").each((i, e) => {
+    let lot = $(e).find(":first-child div a div .kgo-title :first-child strong").text();
+    let slots = $(e).find(":nth-child(2) div a div .kgo-title :first-child span").text();
+    lots.push({ lot: lot, slots: slots });
+  });
 
-//         url = "https://m.csun.edu/alumni_community/find_parking/index"
-//         response = requests.get(url)
-//         soup = BeautifulSoup(response.text, 'html.parser')
+	parkmap = { lots: lots, date: Date.now() }
+}
 
-//         query = []
-//         rows = soup.select("tr.kgoui_object.kgoui_table_table_row")
-//         for row in rows:
-//             lot = row.select_one(
-//                 ":first-child div a div .kgo-title :first-child strong").text
-//             slots = row.select_one(
-//                 ":nth-child(2) div a div .kgo-title :first-child span").text
-//             query.append({"lot": lot, "slots": slots})
-
-//         data['lots'] = query
-//         data['date'] = int(time.time() * 1000)
-
-//     except Exception as err:
-//         print(err)
-
-// app = Flask(__name__)
-
-// @app.route("/parkmap")
-// async def parkmap():
-//     if (int(time.time()*1000) - data['date']) > 300000:
-//         print(data['date'])
-//         await parkingUpdate()
-
-//     return data
-
-
-// if __name__ == "__main__":
-//     app.run()
-})
+app.get("/parkmap", async (req, res) => {
+  if(Date.now() - parkmap.date > 300000) 
+		await parkingUpdate()
+		
+  res.json(parkmap);
+});
 
 app.delete("/delete/:id", (req, res) => {
-  console.log("test");
   permitModel
     .findByIdAndDelete(req.params.id)
     .then(() => console.log("deleted..."))
@@ -140,7 +105,10 @@ app.delete("/delete/:id", (req, res) => {
 });
 
 app.get("/loadLotStatus", (req, res) => {
-  lotStatusModel.find().then((arr) => res.json(arr)).catch(err => res.json('loadlotstatus didnt work'));
+  lotStatusModel
+    .find()
+    .then((arr) => res.json(arr))
+    .catch((err) => res.json("loadlotstatus didnt work"));
 });
 
 app.post("/saveLotStatus", (req, res) => {
@@ -182,49 +150,41 @@ app.post("/saveLotStatus", (req, res) => {
   });
 });
 
-app.post("/saveData", (req,res) => {
-  let data = {_id: req.body._id, data: req.body.data}
-  userModel.findById(req.body._id)
-  .then(user => {
-    if(!user) {
-      let init = new userModel(data)
-      init.save()
-      return res.send("Saved user")
-    }
-    user.data = data;
-    user.save()
-    return res.status(200).send("Saved user")
-  })
-  .catch(err => res.send(err))
-})
+app.post("/saveData", (req, res) => {
+  let data = { _id: req.body._id, data: req.body.data };
+  userModel
+    .findById(req.body._id)
+    .then((user) => {
+      if (!user) {
+        let init = new userModel(data);
+        init.save();
+        return res.send("Saved user");
+      }
+      user.data = data;
+      user.save();
+      return res.status(200).send("Saved user");
+    })
+    .catch((err) => res.send(err));
+});
 
-app.post("/loadData", (req,res) => {
+app.post("/loadData", (req, res) => {
   // mongoose
-})
-
+});
 
 //#region ----------------GOOGLE--------------------
 
-const googCID =
-  "719494722130-1hnnd17h7m5cjsa7st9tlqi9dptdnmmo.apps.googleusercontent.com";
+const googCID = "719494722130-1hnnd17h7m5cjsa7st9tlqi9dptdnmmo.apps.googleusercontent.com";
 const googCS = "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";
 
 let googCache = {};
 
-const GOauth = new google.auth.OAuth2(
-  googCID,
-  googCS,
-   hostUrl+ "/googOauth/callback"
-);
+const GOauth = new google.auth.OAuth2(googCID, googCS, hostUrl + "/googOauth/callback");
 
 app.post("/googOauth", (req, res) => {
   googCache[req.body.uuid] = { origin: req.body.origin };
   const googAuthUrl = GOauth.generateAuthUrl({
     access_type: "offline",
-    scope: [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-    ],
+    scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"],
     include_granted_scopes: true,
     state: req.body.uuid,
   });
@@ -234,14 +194,11 @@ app.post("/googOauth", (req, res) => {
 app.get("/googOauth/callback", async (req, res) => {
   let session = req.query.state;
   const response = await GOauth.getToken(req.query.code);
-  let ax = await axios(
-    "https://people.googleapis.com/v1/people/me?personFields=names",
-    {
-      headers: {
-        Authorization: `Bearer ${response.tokens.access_token}`,
-      },
-    }
-  );
+  let ax = await axios("https://people.googleapis.com/v1/people/me?personFields=names", {
+    headers: {
+      Authorization: `Bearer ${response.tokens.access_token}`,
+    },
+  });
   googCache[session]["googleId"] = ax.data.names[0].metadata.source.id;
   googCache[session]["username"] = ax.data.names[0].displayName;
   googCache[session]["now"] = Date.now();
